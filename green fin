@@ -1,0 +1,180 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "gpuType": "T4",
+      "authorship_tag": "ABX9TyMHa72UlxeVldAwUVTnuZ+G",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    },
+    "accelerator": "GPU"
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/naveenkumar2194/Decentralised-healthcare-data-management-system/blob/main/green%20fin\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 383
+        },
+        "id": "Vupii6DvHV0x",
+        "outputId": "bab2152c-bbdd-48cc-87db-ab78fff1e72c"
+      },
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "ModuleNotFoundError",
+          "evalue": "No module named 'pulp'",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mModuleNotFoundError\u001b[0m                       Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-3-369f9094c93d>\u001b[0m in \u001b[0;36m<cell line: 6>\u001b[0;34m()\u001b[0m\n\u001b[1;32m      4\u001b[0m \u001b[0;32mfrom\u001b[0m \u001b[0msklearn\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mmodel_selection\u001b[0m \u001b[0;32mimport\u001b[0m \u001b[0mtrain_test_split\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      5\u001b[0m \u001b[0;32mfrom\u001b[0m \u001b[0msklearn\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mmetrics\u001b[0m \u001b[0;32mimport\u001b[0m \u001b[0mmean_squared_error\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 6\u001b[0;31m \u001b[0;32mimport\u001b[0m \u001b[0mpulp\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      7\u001b[0m \u001b[0mget_ipython\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0msystem\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'pip install pulp'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      8\u001b[0m \u001b[0;32mimport\u001b[0m \u001b[0mmatplotlib\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mpyplot\u001b[0m \u001b[0;32mas\u001b[0m \u001b[0mplt\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;31mModuleNotFoundError\u001b[0m: No module named 'pulp'",
+            "",
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0;32m\nNOTE: If your import is failing due to a missing package, you can\nmanually install dependencies using either !pip or !apt.\n\nTo view examples of installing some common dependencies, click the\n\"Open Examples\" button below.\n\u001b[0;31m---------------------------------------------------------------------------\u001b[0m\n"
+          ],
+          "errorDetails": {
+            "actions": [
+              {
+                "action": "open_url",
+                "actionText": "Open Examples",
+                "url": "/notebooks/snippets/importing_libraries.ipynb"
+              }
+            ]
+          }
+        }
+      ],
+      "source": [
+        "import pandas as pd\n",
+        "import numpy as np\n",
+        "from sklearn.ensemble import RandomForestRegressor\n",
+        "from sklearn.model_selection import train_test_split\n",
+        "from sklearn.metrics import mean_squared_error\n",
+        "import pulp\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "def load_data():\n",
+        "    esg_data = pd.DataFrame({\n",
+        "        'Project_ID': [1, 2, 3, 4],\n",
+        "        'Emission_Reduction': [50, 30, 40, 20],\n",
+        "        'Social_Impact': [80, 60, 75, 50],\n",
+        "        'Governance_Score': [70, 65, 80, 55],\n",
+        "        'Budget': [100, 200, 150, 180]\n",
+        "    })\n",
+        "    return esg_data\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "CdAgAKfyIDyg"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def calculate_esg_scores(data):\n",
+        "    data['Normalized_Emission'] = data['Emission_Reduction'] / data['Emission_Reduction'].max()\n",
+        "    data['Normalized_Social'] = data['Social_Impact'] / data['Social_Impact'].max()\n",
+        "    data['Normalized_Governance'] = data['Governance_Score'] / data['Governance_Score'].max()\n",
+        "\n",
+        "    weights = {'Normalized_Emission': 0.4, 'Normalized_Social': 0.3, 'Normalized_Governance': 0.3}\n",
+        "    data['ESG_Score'] = (weights['Normalized_Emission'] * data['Normalized_Emission'] +\n",
+        "                         weights['Normalized_Social'] * data['Normalized_Social'] +\n",
+        "                         weights['Normalized_Governance'] * data['Normalized_Governance'])\n",
+        "    return data\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "-ZExZnvTINn5"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def optimize_allocation(data, budget_constraint):\n",
+        "    projects = data['Project_ID'].tolist()\n",
+        "    budgets = dict(zip(data['Project_ID'], data['Budget']))\n",
+        "    esg_scores = dict(zip(data['Project_ID'], data['ESG_Score']))\n",
+        "    prob = pulp.LpProblem(\"GreenFinanceOptimization\", pulp.LpMaximize)\n",
+        "    allocation = pulp.LpVariable.dicts(\"Allocation\", projects, lowBound=0, upBound=1, cat='Continuous')\n",
+        "    prob += pulp.lpSum([esg_scores[p] * allocation[p] for p in projects])\n",
+        "    prob += pulp.lpSum([budgets[p] * allocation[p] for p in projects]) <= budget_constraint\n",
+        "    prob.solve()\n",
+        "    selected_projects = {p: allocation[p].varValue for p in projects if allocation[p].varValue > 0}\n",
+        "    return selected_projects\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "Mfro1RuIIQrR"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def visualize_results(data, selected_projects):\n",
+        "    data['Selected'] = data['Project_ID'].apply(lambda x: x in selected_projects)\n",
+        "    sns.barplot(x='Project_ID', y='ESG_Score', hue='Selected', data=data)\n",
+        "    plt.title('ESG Scores of Projects with Selection Status')\n",
+        "    plt.show()\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "ZGgbnrkkIgMd"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def main():\n",
+        "    data = load_data()\n",
+        "    data = calculate_esg_scores(data)\n",
+        "    budget_constraint = 300\n",
+        "    selected_projects = optimize_allocation(data, budget_constraint)\n",
+        "    visualize_results(data, selected_projects)\n",
+        "\n",
+        "    print(\"Selected Projects for Investment:\")\n",
+        "    print(selected_projects)\n",
+        "\n",
+        "if _name_ == \"_main_\":\n",
+        "    main()"
+      ],
+      "metadata": {
+        "id": "6svTunoaIjCJ"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
